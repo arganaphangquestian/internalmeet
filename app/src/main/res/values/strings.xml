@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">RemindMeet</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_meet">Meeting</string>
+    <string name="title_profile">Profile</string>
+    <string name="nip">NIP</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="content_description_image_profile">Image Profile</string>
+    <string name="general">General</string>
+    <string name="content_description">Content Description</string>
+    <string name="meeting_history">Meeting History</string>
+    <string name="logout">Logout</string>
+    <string name="meeting_name">Meeting name</string>
+    <string name="meeting_topic">Meeting topic</string>
+    <string name="place">Place</string>
+    <string name="participant">Participant</string>
+    <string name="datetime">Date and time</string>
+    <string name="note">Note</string>
+    <string name="require">Require</string>
+    <string name="result">Result</string>
+    <string name="save">Save</string>
+    <string name="done">Done</string>
+    <string name="title_users">Users</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="position">Position</string>
+    <string name="role">Role</string>
+    <string name="scan_meet">Scan Meet</string>
+</resources>

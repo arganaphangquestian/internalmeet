@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "273955611171",
+    "firebase_url": "https://remindmeet-5c97c.firebaseio.com",
+    "project_id": "remindmeet-5c97c",
+    "storage_bucket": "remindmeet-5c97c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273955611171:android:693fb14a4e113694760796",
+        "android_client_info": {
+          "package_name": "com.rizkydian.internalmeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273955611171-a24f6e3o90ih9dna8ocj6po8bahslq9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4lNWE-HsYE7y4eIpBBExI6KgxaVDZBv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273955611171-a24f6e3o90ih9dna8ocj6po8bahslq9a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

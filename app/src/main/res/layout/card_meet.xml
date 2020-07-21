@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/size_8dp"
+    app:shape_roundRect_bottomLeftRadius="@dimen/size_16dp"
+    app:shape_roundRect_bottomRightRadius="@dimen/size_16dp"
+    app:shape_roundRect_topLeftRadius="@dimen/size_16dp"
+    app:shape_roundRect_topRightRadius="@dimen/size_16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorOverlay5"
+        android:paddingHorizontal="@dimen/size_32dp"
+        android:paddingVertical="@dimen/size_16dp">
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/cv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/size_56dp"
+                android:layout_height="@dimen/size_56dp"
+                android:background="@color/colorOverlay5"
+                android:contentDescription="@string/content_description"
+                android:padding="@dimen/size_8dp"
+                tools:src="@tools:sample/avatars" />
+
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_16dp"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_18sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_role"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cv_icon"
+            app:layout_constraintTop_toTopOf="@+id/cv_icon"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tv_role"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_16dp"
+            android:layout_marginTop="@dimen/size_8dp"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@id/cv_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cv_icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="@tools:sample/cities" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.github.florent37.shapeofview.shapes.RoundRectView>

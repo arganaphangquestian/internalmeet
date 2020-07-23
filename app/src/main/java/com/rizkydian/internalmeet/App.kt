@@ -1,9 +1,9 @@
 package com.rizkydian.internalmeet
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-// TODO Add hilt
-@Suppress("unused")
+@HiltAndroidApp
 class App : Application() {
     override fun onCreate() {
         super.onCreate()

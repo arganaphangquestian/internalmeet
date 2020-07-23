@@ -6,17 +6,19 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import com.rizkydian.remindmeet.R
-import com.rizkydian.remindmeet.databinding.ActivityLoginBinding
-import com.rizkydian.remindmeet.ui.main.MainActivity
-import com.rizkydian.remindmeet.utils.NetworkState
-import com.rizkydian.remindmeet.utils.SharedPrefs
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.lifecycle.ViewModelProvider
+import com.rizkydian.internalmeet.R
+import com.rizkydian.internalmeet.databinding.ActivityLoginBinding
+import com.rizkydian.internalmeet.ui.main.MainActivity
+import com.rizkydian.internalmeet.utils.NetworkState
+import com.rizkydian.internalmeet.utils.SharedPrefs
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginBinding: ActivityLoginBinding
-    private val loginViewModel by viewModel<LoginViewModel>()
+    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun init() {
         SharedPrefs.clearUser()
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         loginBinding.apply {
             lifecycleOwner = this@LoginActivity

@@ -3,8 +3,9 @@ package com.rizkydian.internalmeet.datasource.network
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.rizkydian.internalmeet.data.User
+import javax.inject.Inject
 
-class UserNetwork {
+class UserNetwork @Inject constructor() {
 
     private val firestore = Firebase.firestore
 

@@ -3,14 +3,16 @@ package com.rizkydian.internalmeet.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.rizkydian.remindmeet.R
-import com.rizkydian.remindmeet.utils.ADMINBOTTOMMENU
-import com.rizkydian.remindmeet.utils.MEMBERBOTTOMMENU
-import com.rizkydian.remindmeet.utils.SharedPrefs
-import com.rizkydian.remindmeet.utils.USERROLE
+import com.rizkydian.internalmeet.R
+import com.rizkydian.internalmeet.utils.ADMINBOTTOMMENU
+import com.rizkydian.internalmeet.utils.MEMBERBOTTOMMENU
+import com.rizkydian.internalmeet.utils.SharedPrefs
+import com.rizkydian.internalmeet.utils.USERROLE
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import me.ibrahimsn.lib.OnItemSelectedListener
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val mainAdapter = MainAdapter(supportFragmentManager)

@@ -1,7 +1,8 @@
 package com.rizkydian.internalmeet.ui.main
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class MainViewModel @ViewModelInject constructor() : ViewModel() {
 
 }

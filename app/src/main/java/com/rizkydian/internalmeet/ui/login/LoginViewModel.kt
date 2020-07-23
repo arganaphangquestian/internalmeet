@@ -1,14 +1,15 @@
 package com.rizkydian.internalmeet.ui.login
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rizkydian.remindmeet.datasource.repository.UserRepository
-import com.rizkydian.remindmeet.utils.NetworkState
-import com.rizkydian.remindmeet.utils.SharedPrefs
-import com.rizkydian.remindmeet.utils.USERNIP
-import com.rizkydian.remindmeet.utils.USERROLE
+import com.rizkydian.internalmeet.datasource.repository.UserRepository
+import com.rizkydian.internalmeet.utils.NetworkState
+import com.rizkydian.internalmeet.utils.SharedPrefs
+import com.rizkydian.internalmeet.utils.USERNIP
+import com.rizkydian.internalmeet.utils.USERROLE
 
-class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
+class LoginViewModel @ViewModelInject constructor(private val userRepository: UserRepository) : ViewModel() {
     val nip = MutableLiveData("")
     val password = MutableLiveData("")
     val loginStatus = MutableLiveData<NetworkState>()

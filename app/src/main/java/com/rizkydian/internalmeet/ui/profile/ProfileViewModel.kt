@@ -1,12 +1,14 @@
 package com.rizkydian.internalmeet.ui.profile
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rizkydian.remindmeet.datasource.repository.UserRepository
-import com.rizkydian.remindmeet.utils.SharedPrefs
-import com.rizkydian.remindmeet.utils.USERNIP
+import com.rizkydian.internalmeet.datasource.repository.UserRepository
+import com.rizkydian.internalmeet.utils.SharedPrefs
+import com.rizkydian.internalmeet.utils.USERNIP
 
-class ProfileViewModel(private val userRepository: UserRepository) : ViewModel() {
+class ProfileViewModel @ViewModelInject constructor(userRepository: UserRepository) :
+    ViewModel() {
     val nip = MutableLiveData(SharedPrefs.get(USERNIP, "") as String)
     val name = MutableLiveData("")
 

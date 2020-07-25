@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.zxing.integration.android.IntentIntegrator
 import com.rizkydian.internalmeet.R
+import com.rizkydian.internalmeet.ui.scanner.ScannerActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -37,16 +38,26 @@ class HomeFragment : Fragment() {
 
     private fun action() {
         mb_home.setOnClickListener {
-            val integrator = IntentIntegrator.forSupportFragment(this)
-            integrator.initiateScan()
+            barcodeScanner()
         }
+    }
+
+    private fun barcodeScanner() {
+        val integrator = IntentIntegrator.forSupportFragment(this)
+        integrator.captureActivity = ScannerActivity::class.java
+        integrator.setOrientationLocked(false)
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
+        integrator.setPrompt("Scanning QR Code")
+        integrator.initiateScan()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val result = IntentIntegrator.parseActivityResult(resultCode, data)
-        if(result != null) {
-            Toast.makeText(this.requireContext(), result.contents, Toast.LENGTH_LONG).show()
+        val res = IntentIntegrator.parseActivityResult(resultCode, data)
+        if(res != null && res.contents != null) {
+            Toast.makeText(this.requireContext(), res.contents, Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this.requireContext(), "Scan Failed", Toast.LENGTH_LONG).show()
         }
     }
 

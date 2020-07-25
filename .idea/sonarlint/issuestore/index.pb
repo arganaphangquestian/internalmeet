@@ -1,6 +1,4 @@
 
-l
-<app/src/main/java/com/rizkydian/internalmeet/MainActivity.kt,f/7/f7ff0384436cc3ba697054f0004616f73eabed72
 <
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 p
@@ -33,8 +31,6 @@ z
 Japp/src/main/java/com/rizkydian/internalmeet/ui/profile/ProfileFragment.kt,a/0/a0304f16c632112a23f5af7dc900d70cb90d0c63
 {
 Kapp/src/main/java/com/rizkydian/internalmeet/ui/profile/ProfileViewModel.kt,5/a/5aa11fcd3276cd5d2e974be4e62fd0842ed095bc
-
-Qapp/src/main/java/com/rizkydian/internalmeet/ui/profileadd/ProfileAddViewModel.kt,d/8/d8ceda87f678077db0991bda258d3bc8d792ad16
 r
 Bapp/src/main/java/com/rizkydian/internalmeet/utils/NetworkState.kt,c/0/c0ed41bb03f23073db2e31843f10a06fd9a84a26
 t
@@ -69,13 +65,29 @@ Wapp/src/main/java/com/rizkydian/internalmeet/datasource/repository/MeetingRepos
 Tapp/src/main/java/com/rizkydian/internalmeet/datasource/repository/UserRepository.kt,3/d/3d652da57ece278f4ee153ae23652fb117a3bec0
 v
 Fapp/src/main/java/com/rizkydian/internalmeet/ui/users/UserViewModel.kt,6/c/6c9bd32b3426fbaa1086dea079b5e91e40028f8b
-€
-Papp/src/main/java/com/rizkydian/internalmeet/ui/meetdetail/MeetDetailActivity.kt,c/e/cef642483e375a7fd7f7ca11d3e45e2b81ef9539
 H
 app/google-services.json,f/d/fd8d34b142d02ec743a8efefefd2c097961666e9
-€
-Papp/src/main/java/com/rizkydian/internalmeet/ui/profileadd/ProfileAddActivity.kt,1/3/13264fbf7f8ab97edd3af759d960fc5f32978740
 A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
+T
+$.github/workflows/Android Deploy.yml,9/b/9bd441919ad9d1e03c618e4e4dcea0062ddadbd9
+z
+Japp/src/main/java/com/rizkydian/internalmeet/ui/scanner/ScannerActivity.kt,c/0/c06d65349c04c5a716a0f805665b486c945cf7df
+z
+Japp/src/main/java/com/rizkydian/internalmeet/ui/useradd/UserAddActivity.kt,a/5/a58928c267474c18412073cc54dd71d6ad5ec6c9
+{
+Kapp/src/main/java/com/rizkydian/internalmeet/ui/useradd/UserAddViewModel.kt,1/d/1de5332a8712a977263b532006e3d2864e4c1feb
+†
+Vapp/src/main/java/com/rizkydian/internalmeet/ui/meet/upcoming/MeetUpcomingViewModel.kt,0/3/03af35c2b6bbd630218be9ad2e684947d9c63e0b
+„
+Tapp/src/main/java/com/rizkydian/internalmeet/ui/meet/history/MeetHistoryViewModel.kt,f/0/f0e8bd4be38466d7da7bdf6a968f29d8b6f20666
+…
+Uapp/src/main/java/com/rizkydian/internalmeet/ui/meet/upcoming/MeetUpcomingFragment.kt,8/c/8c7996ebf736fcc9739853077c61e24531abe33c
+ƒ
+Sapp/src/main/java/com/rizkydian/internalmeet/ui/meet/history/MeetHistoryFragment.kt,e/0/e0d469099c7d792fb0d66cc241f64757f10a6a8f
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+{
+Kapp/src/main/java/com/rizkydian/internalmeet/service/NotificationService.kt,4/4/444552116e2ebf7a9bb3834690cf562729b6bb14

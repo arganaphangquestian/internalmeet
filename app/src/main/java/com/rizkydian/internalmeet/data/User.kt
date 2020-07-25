@@ -8,5 +8,6 @@ data class User(
     var imageProfile: String? = "",
     var position: String = "",
     var role: String = "",
-    var meetings: List<Meet>? = null
+    var meetings: List<Meet>? = null,
+    var token: String? = null
 )

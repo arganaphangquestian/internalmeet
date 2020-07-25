@@ -9,8 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rizkydian.internalmeet.R
+import com.rizkydian.internalmeet.ui.useradd.UserAddActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_user.*
 
+@AndroidEntryPoint
 class UserFragment : Fragment() {
 
     companion object {
@@ -46,6 +49,13 @@ class UserFragment : Fragment() {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(this@UserFragment.requireContext())
             setHasFixedSize(true)
+        }
+        action()
+    }
+
+    private fun action() {
+        fab_add.setOnClickListener {
+            startActivity(Intent(this.requireContext(), UserAddActivity::class.java))
         }
     }
 

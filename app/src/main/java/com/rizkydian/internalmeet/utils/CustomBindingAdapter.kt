@@ -4,9 +4,11 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.annotation.LayoutRes
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
 import com.google.android.material.textfield.TextInputEditText
 import com.rizkydian.internalmeet.R
 
+@Suppress("unused")
 @BindingAdapter("isDisable")
 fun disableTextInputEditText(view: TextInputEditText, bool: Boolean) {
     view.isFocusable = bool

@@ -28,13 +28,13 @@ class UserNetwork @Inject constructor() {
             )
         )
 
-    fun getUserByNIP(nip: String) = firestore
-        .collection("users")
-        .whereEqualTo("nip", nip)
-
     fun getUsers() = firestore.collection("users")
 
     fun getUser(nip: String) = firestore
         .collection("users")
         .whereEqualTo("nip", nip)
+
+    fun getUserByID(id: String) = firestore
+        .collection("users")
+        .document(id)
 }

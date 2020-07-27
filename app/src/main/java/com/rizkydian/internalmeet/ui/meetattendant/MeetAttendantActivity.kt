@@ -1,7 +1,7 @@
 package com.rizkydian.internalmeet.ui.meetattendant
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.rizkydian.internalmeet.R
 import com.rizkydian.internalmeet.ui.meetattendant.absent.MeetAbsentFragment
@@ -12,8 +12,12 @@ import kotlinx.android.synthetic.main.activity_meet_attendent.*
 @AndroidEntryPoint
 class MeetAttendantActivity : AppCompatActivity() {
 
-    private lateinit var meetAttendantAdapter : MeetAttendantAdapter
-    private var id: String? = ""
+    private lateinit var meetAttendantAdapter: MeetAttendantAdapter
+
+    companion object {
+        var id: String? = ""
+            private set
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

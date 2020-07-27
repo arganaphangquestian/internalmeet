@@ -8,7 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rizkydian.internalmeet.R
-import com.rizkydian.internalmeet.ui.meet.MeetItemAdapter
+import com.rizkydian.internalmeet.ui.meetattendant.MeetAttendantActivity
+import com.rizkydian.internalmeet.ui.meetattendant.MeetAttendantItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_meet_absent.*
 
@@ -20,7 +21,7 @@ class MeetAbsentFragment : Fragment() {
     }
 
     private lateinit var meetAbsentViewModel: MeetAbsentViewModel
-    private lateinit var meetItemAdapter: MeetItemAdapter
+    private lateinit var meetItemAdapter: MeetAttendantItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,8 +43,7 @@ class MeetAbsentFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         meetAbsentViewModel = ViewModelProvider(this).get(MeetAbsentViewModel::class.java)
-        // TODO Please add get Users
-        // meetItemAdapter = MeetItemAdapter(meetPresentViewModel.getUser())
+        meetItemAdapter = MeetAttendantItemAdapter(meetAbsentViewModel.getUsers(MeetAttendantActivity.id ?: ""))
         meetItemAdapter.notifyDataSetChanged()
         rv_user.apply {
             adapter = meetItemAdapter

@@ -39,12 +39,12 @@ class MeetItemAdapter(ops: FirestoreRecyclerOptions<Meet>) :
             }
             itemView.tv_title.text = data.name
             itemView.tv_role.text = data.place
-            itemView.setOnClickListener { onItemClickCallback?.onItemClicked(data) }
+            itemView.setOnClickListener { onItemClickCallback?.onItemClicked(data, itemView) }
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Meet)
+        fun onItemClicked(data: Meet, itemView: View)
     }
 
 }

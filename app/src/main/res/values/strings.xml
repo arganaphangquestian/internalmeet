@@ -29,4 +29,10 @@
     <string name="role">Role</string>
     <string name="scan_meet">Scan Meet</string>
     <string name="default_notification_channel_id">Meeting</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="detail">Detail</string>
+    <string name="attendants">Attendants</string>
+    <string name="topic">Topic</string>
+    <string name="set_done">Set Done</string>
 </resources>

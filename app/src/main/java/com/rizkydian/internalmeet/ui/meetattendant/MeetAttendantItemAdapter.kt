@@ -1,4 +1,4 @@
-package com.rizkydian.internalmeet.ui.users
+package com.rizkydian.internalmeet.ui.meetattendant
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +11,8 @@ import com.rizkydian.internalmeet.R
 import com.rizkydian.internalmeet.data.User
 import kotlinx.android.synthetic.main.card_user.view.*
 
-class UserAdapter(ops: FirestoreRecyclerOptions<User>) :
-    FirestoreRecyclerAdapter<User, UserAdapter.ViewHolder>(ops) {
+class MeetAttendantItemAdapter (ops: FirestoreRecyclerOptions<User>) :
+    FirestoreRecyclerAdapter<User, MeetAttendantItemAdapter.ViewHolder>(ops) {
 
     private var onItemClickCallback: OnItemClickCallback? = null
 

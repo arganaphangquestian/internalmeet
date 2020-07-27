@@ -11,6 +11,8 @@ import com.rizkydian.internalmeet.R
 import com.rizkydian.internalmeet.ui.meet.history.MeetHistoryFragment
 import com.rizkydian.internalmeet.ui.meet.upcoming.MeetUpcomingFragment
 import com.rizkydian.internalmeet.ui.meetadd.MeetAddActivity
+import com.rizkydian.internalmeet.utils.SharedPrefs
+import com.rizkydian.internalmeet.utils.USERROLE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_meet.*
 
@@ -21,7 +23,6 @@ class MeetFragment : Fragment() {
         fun newInstance() = MeetFragment()
     }
 
-    private lateinit var meetViewModel: MeetViewModel
     private lateinit var meetAdapter: MeetAdapter
 
     override fun onCreateView(
@@ -33,7 +34,6 @@ class MeetFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        meetViewModel = ViewModelProvider(this).get(MeetViewModel::class.java)
         init()
     }
 
@@ -51,6 +51,9 @@ class MeetFragment : Fragment() {
     }
 
     private fun action() {
+        if(SharedPrefs.get(USERROLE, "") as String != "Admin") {
+            fab_add.visibility = View.GONE
+        }
         fab_add.setOnClickListener {
             startActivity(Intent(this.requireContext(), MeetAddActivity::class.java))
         }

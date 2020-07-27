@@ -20,7 +20,6 @@ object NetworkModule {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
-            .addInterceptor(logging)
             .addInterceptor {
                 val req =
                     it.request().newBuilder()

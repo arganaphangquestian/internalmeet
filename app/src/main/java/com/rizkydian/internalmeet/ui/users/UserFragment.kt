@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rizkydian.internalmeet.R
 import com.rizkydian.internalmeet.ui.useradd.UserAddActivity
+import com.rizkydian.internalmeet.utils.SharedPrefs
+import com.rizkydian.internalmeet.utils.USERROLE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_user.*
 
@@ -54,6 +56,9 @@ class UserFragment : Fragment() {
     }
 
     private fun action() {
+        if(SharedPrefs.get(USERROLE, "") as String != "Admin") {
+            fab_add.visibility = View.GONE
+        }
         fab_add.setOnClickListener {
             startActivity(Intent(this.requireContext(), UserAddActivity::class.java))
         }

@@ -33,8 +33,8 @@ class MeetAttendantActivity : AppCompatActivity() {
         meetAttendantAdapter = MeetAttendantAdapter(supportFragmentManager)
         meetAttendantAdapter.setData(
             listOf(
-                FrameMeet(MeetAbsentFragment.newInstance(), "Absents"),
-                FrameMeet(MeetPresentFragment.newInstance(), "Presents")
+                FrameMeet(MeetPresentFragment.newInstance(), "Presents"),
+                FrameMeet(MeetAbsentFragment.newInstance(), "Absents")
             )
         )
         vp_meetAttendent.adapter = meetAttendantAdapter

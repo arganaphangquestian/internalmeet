@@ -7,12 +7,20 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.Query
 import com.rizkydian.internalmeet.R
 import com.rizkydian.internalmeet.data.User
 import kotlinx.android.synthetic.main.card_user.view.*
 
-class MeetAttendantItemAdapter (ops: FirestoreRecyclerOptions<User>) :
-    FirestoreRecyclerAdapter<User, MeetAttendantItemAdapter.ViewHolder>(ops) {
+class MeetAttendantItemAdapter :
+    RecyclerView.Adapter<MeetAttendantItemAdapter.ViewHolder>() {
+
+    private lateinit var dataList : List<User>
+
+    fun setData(data: List<User>) {
+        dataList = data
+        this.notifyDataSetChanged()
+    }
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
@@ -26,8 +34,10 @@ class MeetAttendantItemAdapter (ops: FirestoreRecyclerOptions<User>) :
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int, model: User) {
-        holder.bind(model)
+    override fun getItemCount() = dataList.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(dataList[position])
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

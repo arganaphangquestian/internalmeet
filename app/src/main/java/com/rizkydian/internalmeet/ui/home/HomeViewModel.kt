@@ -28,7 +28,7 @@ class HomeViewModel @ViewModelInject constructor(private val meetRepo: MeetingRe
                         it.timeAttendent = SimpleDateFormat(DATETIMEFORMAT, Locale.ROOT).format(Date())
                     }
                 }
-                meetRepo.getByID(id).update("participant", meet.participant)
+                meetRepo.getByID(documentSnapshots.documentChanges[0].document.id).update("participant", meet.participant)
                     .addOnSuccessListener {
                         networkState.value = NetworkState.LOADED
                     }

@@ -25,16 +25,22 @@ class HomeViewModel @ViewModelInject constructor(private val meetRepo: MeetingRe
                 meet.participant?.forEach {
                     if (it.userNIP == SharedPrefs.get(USERNIP, "")) {
                         it.attendent = true
-                        it.timeAttendent = SimpleDateFormat(DATETIMEFORMAT, Locale.ROOT).format(Date())
+                        it.timeAttendent =
+                            SimpleDateFormat(DATETIMEFORMAT, Locale.ROOT).format(Date())
+                    } else {
+                        networkState.value = NetworkState.error("User not participant")
                     }
                 }
-                meetRepo.getByID(documentSnapshots.documentChanges[0].document.id).update("participant", meet.participant)
+                meetRepo.getByID(documentSnapshots.documentChanges[0].document.id)
+                    .update("participant", meet.participant)
                     .addOnSuccessListener {
                         networkState.value = NetworkState.LOADED
                     }
                     .addOnFailureListener {
                         networkState.value = NetworkState.error(it.message)
                     }
+            } else {
+                networkState.value = NetworkState.error("QR incorrect")
             }
         }.addOnFailureListener {
             networkState.value = NetworkState.error(it.message)

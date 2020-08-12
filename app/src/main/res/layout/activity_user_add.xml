@@ -141,6 +141,28 @@
                         tools:ignore="LabelFor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_gender"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/size_16dp"
+                    android:hint="@string/gender"
+                    app:helperText="@string/require">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:completionThreshold="@{999999}"
+                        android:inputType="none"
+                        app:dropDownItemLayout="@{@layout/default_dropdown_menu_popup_item}"
+                        app:dropDownItems="@{viewModel.GENDER}"
+                        app:dropDownItemsIncludeEmpty="@{false}"
+                        android:text="@={viewModel.user.gender}"
+                        tools:ignore="LabelFor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </ScrollView>
 

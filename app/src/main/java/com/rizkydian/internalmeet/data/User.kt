@@ -9,5 +9,6 @@ data class User(
     var position: String = "",
     var role: String = "",
     var meetings: List<Meet>? = null,
-    var token: String? = null
+    var token: String? = null,
+    var gender: String = ""
 )

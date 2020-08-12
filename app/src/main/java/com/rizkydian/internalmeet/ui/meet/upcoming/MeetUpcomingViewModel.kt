@@ -20,7 +20,10 @@ class MeetUpcomingViewModel @ViewModelInject constructor(private val meetReposit
         meetRepository.getByMeetID(id).get().addOnSuccessListener { documentSnapshots ->
             if (documentSnapshots.documents[0].toObject<Meet>() != null) {
                 meetRepository.getByID(documentSnapshots.documentChanges[0].document.id)
-                    .update("result", result)
+                    .update(mapOf(
+                        "result" to result,
+                        "done" to true
+                    ))
                     .addOnSuccessListener {
                         networkState.value = NetworkState.LOADED
                     }

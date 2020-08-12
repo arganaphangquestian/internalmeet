@@ -9,6 +9,7 @@ import com.rizkydian.internalmeet.utils.NetworkState
 
 class UserAddViewModel @ViewModelInject constructor(private val userRepo: UserRepository): ViewModel() {
     val ROLES = arrayOf("Admin", "Member")
+    val GENDER = arrayOf("Laki-Laki", "Perempuan")
 
     val user = MutableLiveData(User())
     private val networkState = MutableLiveData<NetworkState>()
@@ -21,7 +22,8 @@ class UserAddViewModel @ViewModelInject constructor(private val userRepo: UserRe
             !user.value?.email.isNullOrEmpty() &&
             !user.value?.password.isNullOrEmpty() &&
             !user.value?.position.isNullOrEmpty() &&
-            !user.value?.role.isNullOrEmpty()
+            !user.value?.role.isNullOrEmpty() &&
+            !user.value?.gender.isNullOrEmpty()
         ) {
             val tmpUser =
                 User(
@@ -31,7 +33,8 @@ class UserAddViewModel @ViewModelInject constructor(private val userRepo: UserRe
                     password = user.value!!.password,
                     imageProfile = user.value!!.imageProfile,
                     position = user.value!!.position,
-                    role = user.value!!.role
+                    role = user.value!!.role,
+                    gender = user.value!!.gender
                 )
             println(tmpUser)
             userRepo.register(tmpUser).addOnSuccessListener {

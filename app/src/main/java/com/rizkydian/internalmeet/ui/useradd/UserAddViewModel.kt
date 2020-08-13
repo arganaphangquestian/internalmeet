@@ -36,7 +36,6 @@ class UserAddViewModel @ViewModelInject constructor(private val userRepo: UserRe
                     role = user.value!!.role,
                     gender = user.value!!.gender
                 )
-            println(tmpUser)
             userRepo.register(tmpUser).addOnSuccessListener {
                 networkState.value = NetworkState.LOADED
             }.addOnFailureListener {

@@ -32,19 +32,26 @@ class UserAdapter(ops: FirestoreRecyclerOptions<User>) :
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(data: User) {
-            itemView.iv_icon.load(R.drawable.ic_profile) {
-                allowHardware(false)
-                crossfade(true)
+            if(data.gender == "Perempuan") {
+                itemView.iv_icon.load(R.drawable.ic_female) {
+                    allowHardware(false)
+                    crossfade(true)
+                }
+            } else {
+                itemView.iv_icon.load(R.drawable.ic_male) {
+                    allowHardware(false)
+                    crossfade(true)
+                }
             }
 
             itemView.tv_title.text = data.name
             itemView.tv_role.text = data.role
-            itemView.setOnClickListener { onItemClickCallback?.onItemClicked(data) }
+            itemView.setOnClickListener { onItemClickCallback?.onItemClicked(data, itemView) }
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: User)
+        fun onItemClicked(data: User, itemView: View)
     }
 
 }

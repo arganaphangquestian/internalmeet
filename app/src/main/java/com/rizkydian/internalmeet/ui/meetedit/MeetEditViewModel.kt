@@ -119,8 +119,8 @@ class MeetEditViewModel @ViewModelInject constructor(
         networkState.value = NetworkState.LOADING
         meetRepo.getByMeetID(id ?: "").get()
             .addOnSuccessListener {
-                if(it.documents.isNullOrEmpty()) {
-                networkState.value = NetworkState.error("Data Not Found")
+                if (it.documents.isNullOrEmpty()) {
+                    networkState.value = NetworkState.error("Meet Not Found")
                 } else {
                     meet.value = it.documents[0].toObject(Meet::class.java)
                     networkState.value = NetworkState.LOADED

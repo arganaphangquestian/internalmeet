@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.meetattendant.MeetAttendantActivity"/>
+        <activity android:name=".ui.meetedit.MeetEditActivity"></activity>
+        <activity android:name=".ui.meetattendant.MeetAttendantActivity" />
         <activity android:name=".ui.meetdetail.MeetDetailActivity" />
         <activity android:name=".ui.useradd.UserAddActivity" />
         <activity android:name=".ui.meetadd.MeetAddActivity" />

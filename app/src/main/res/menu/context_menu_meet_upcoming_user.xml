@@ -2,5 +2,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_context_detail" android:title="@string/detail"/>
     <item android:id="@+id/menu_context_attendent" android:title="@string/attendants"/>
-    <item android:id="@+id/menu_context_done" android:title="@string/set_done"/>
 </menu>

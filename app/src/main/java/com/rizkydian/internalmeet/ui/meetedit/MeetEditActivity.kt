@@ -1,9 +1,9 @@
-package com.rizkydian.internalmeet.ui.meetadd
+package com.rizkydian.internalmeet.ui.meetedit
 
 import android.app.TimePickerDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,20 +11,25 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.rizkydian.internalmeet.R
 import com.rizkydian.internalmeet.data.Attendent
-import com.rizkydian.internalmeet.databinding.ActivityMeetAddBinding
+import com.rizkydian.internalmeet.databinding.ActivityMeetEditBinding
 import com.rizkydian.internalmeet.utils.DATEFORMAT
 import com.rizkydian.internalmeet.utils.NetworkState
 import com.rizkydian.internalmeet.utils.TIMEFORMAT
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_meet_add.*
+import kotlinx.android.synthetic.main.activity_meet_edit.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class MeetAddActivity : AppCompatActivity() {
+class MeetEditActivity : AppCompatActivity() {
 
-    private lateinit var meetAddBinding: ActivityMeetAddBinding
-    private lateinit var meetAddViewModel: MeetAddViewModel
+    private lateinit var meetEditBinding: ActivityMeetEditBinding
+    private lateinit var meetEditViewModel: MeetEditViewModel
+
+    companion object {
+        var id: String? = ""
+            private set
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,15 +37,17 @@ class MeetAddActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        id = intent.getStringExtra("id")
         setTheme(R.style.AppThemeActionBar)
-        supportActionBar?.title = "Add new Meet"
+        supportActionBar?.title = "Edit Meet"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        meetAddViewModel = ViewModelProvider(this).get(MeetAddViewModel::class.java)
-        meetAddBinding = DataBindingUtil.setContentView(this, R.layout.activity_meet_add)
-        meetAddBinding.apply {
-            lifecycleOwner = this@MeetAddActivity
-            viewModel = meetAddViewModel
+        meetEditViewModel = ViewModelProvider(this).get(MeetEditViewModel::class.java)
+        meetEditBinding = DataBindingUtil.setContentView(this, R.layout.activity_meet_edit)
+        meetEditBinding.apply {
+            lifecycleOwner = this@MeetEditActivity
+            viewModel = meetEditViewModel
         }
+        loadInitialMeet()
         action()
     }
 
@@ -49,9 +56,17 @@ class MeetAddActivity : AppCompatActivity() {
         return true
     }
 
+    private fun loadInitialMeet() {
+        meetEditViewModel.get(id).observe(this, Observer { net ->
+            if (net != null && net.status == NetworkState.Status.FAILED) {
+                Toast.makeText(this, net.msg, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
     private fun action() {
         mb_form.setOnClickListener {
-            meetAddViewModel.add().observe(this, Observer {
+            meetEditViewModel.edit(id).observe(this, Observer {
                 if (it != null) {
                     if (it.status == NetworkState.Status.SUCCESS) {
                         finish()
@@ -72,7 +87,7 @@ class MeetAddActivity : AppCompatActivity() {
             }
             picker.addOnPositiveButtonClickListener {
                 val date = SimpleDateFormat(DATEFORMAT, Locale.ROOT).format(it)
-                meetAddViewModel.meetDate.value = date
+                meetEditViewModel.meetDate.value = date
                 tie_date.setText(date)
                 picker.dismiss()
             }
@@ -84,7 +99,7 @@ class MeetAddActivity : AppCompatActivity() {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
                 cal.set(Calendar.MINUTE, minute)
                 val time = SimpleDateFormat(TIMEFORMAT, Locale.ROOT).format(cal.time)
-                meetAddViewModel.meetTime.value = time
+                meetEditViewModel.meetTime.value = time
                 tie_time.setText(time)
             }
             TimePickerDialog(
@@ -96,7 +111,7 @@ class MeetAddActivity : AppCompatActivity() {
             ).show()
         }
         tie_participant.setOnClickListener {
-            meetAddViewModel.users.observe(this, Observer {
+            meetEditViewModel.users.observe(this, Observer {
                 val attendents = arrayListOf<Attendent>()
                 val multiItems = it.map { user -> user.name }.toTypedArray()
                 val checkedItems = it.map { false }.toBooleanArray()
@@ -110,7 +125,7 @@ class MeetAddActivity : AppCompatActivity() {
                             user.nip in attendents.map { attendent -> attendent.userNIP }
                         }
                         tie_participant.setText(users.joinToString { user -> user.name })
-                        meetAddViewModel.meet.value?.participant = attendents
+                        meetEditViewModel.meet.value?.participant = attendents
                         dialog.dismiss()
                     }
                     .setMultiChoiceItems(multiItems, checkedItems) { _, which, checked ->

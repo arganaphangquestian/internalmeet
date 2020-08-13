@@ -20,7 +20,10 @@ import com.rizkydian.internalmeet.data.Meet
 import com.rizkydian.internalmeet.ui.meet.MeetItemAdapter
 import com.rizkydian.internalmeet.ui.meetattendant.MeetAttendantActivity
 import com.rizkydian.internalmeet.ui.meetdetail.MeetDetailActivity
+import com.rizkydian.internalmeet.ui.meetedit.MeetEditActivity
 import com.rizkydian.internalmeet.utils.NetworkState
+import com.rizkydian.internalmeet.utils.SharedPrefs
+import com.rizkydian.internalmeet.utils.USERROLE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.card_meet.view.*
 import kotlinx.android.synthetic.main.fragment_meet_upcoming.*
@@ -68,31 +71,59 @@ class MeetUpcomingFragment : Fragment() {
     private fun action() {
         val intentDetail = Intent(this.requireContext(), MeetDetailActivity::class.java)
         val intentAttendent = Intent(this.requireContext(), MeetAttendantActivity::class.java)
+        val intentEdit = Intent(this.requireContext(), MeetEditActivity::class.java)
         meetItemAdapter.setOnClickCallback(object : MeetItemAdapter.OnItemClickCallback {
             override fun onItemClicked(
                 data: Meet,
                 itemView: View
             ) {
                 val popUp = PopupMenu(this@MeetUpcomingFragment.requireContext(), itemView.root)
-                popUp.inflate(R.menu.context_menu_meet_upcoming)
-                popUp.setOnMenuItemClickListener {
-                    when (it.itemId) {
-                        R.id.menu_context_detail -> {
-                            intentDetail.putExtra("id", data.id)
-                            this@MeetUpcomingFragment.requireActivity().startActivity(intentDetail)
-                            return@setOnMenuItemClickListener true
+                if(SharedPrefs.get(USERROLE, "") as String == "Admin") {
+                    popUp.inflate(R.menu.context_menu_meet_upcoming_admin)
+                    popUp.setOnMenuItemClickListener {
+                        when (it.itemId) {
+                            R.id.menu_context_detail -> {
+                                intentDetail.putExtra("id", data.id)
+                                this@MeetUpcomingFragment.requireActivity()
+                                    .startActivity(intentDetail)
+                                return@setOnMenuItemClickListener true
+                            }
+                            R.id.menu_context_attendent -> {
+                                intentAttendent.putExtra("id", data.id)
+                                this@MeetUpcomingFragment.requireActivity()
+                                    .startActivity(intentAttendent)
+                                return@setOnMenuItemClickListener true
+                            }
+                            R.id.menu_context_done -> {
+                                bottomSheet(data)
+                                return@setOnMenuItemClickListener true
+                            }
+                            R.id.menu_context_edit -> {
+                                intentEdit.putExtra("id", data.id)
+                                this@MeetUpcomingFragment.requireActivity()
+                                    .startActivity(intentEdit)
+                                return@setOnMenuItemClickListener true
+                            }
+                            else -> return@setOnMenuItemClickListener false
                         }
-                        R.id.menu_context_attendent -> {
-                            intentAttendent.putExtra("id", data.id)
-                            this@MeetUpcomingFragment.requireActivity()
-                                .startActivity(intentAttendent)
-                            return@setOnMenuItemClickListener true
+                    }
+                } else {
+                    popUp.inflate(R.menu.context_menu_meet_history_user)
+                    popUp.setOnMenuItemClickListener {
+                        when (it.itemId) {
+                            R.id.menu_context_detail -> {
+                                intentDetail.putExtra("id", data.id)
+                                this@MeetUpcomingFragment.requireActivity().startActivity(intentDetail)
+                                return@setOnMenuItemClickListener true
+                            }
+                            R.id.menu_context_attendent -> {
+                                intentAttendent.putExtra("id", data.id)
+                                this@MeetUpcomingFragment.requireActivity()
+                                    .startActivity(intentAttendent)
+                                return@setOnMenuItemClickListener true
+                            }
+                            else -> return@setOnMenuItemClickListener false
                         }
-                        R.id.menu_context_done -> {
-                            bottomSheet(data)
-                            return@setOnMenuItemClickListener true
-                        }
-                        else -> return@setOnMenuItemClickListener false
                     }
                 }
                 popUp.show()

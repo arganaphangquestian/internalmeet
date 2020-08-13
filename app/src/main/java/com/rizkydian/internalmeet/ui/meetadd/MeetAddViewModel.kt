@@ -77,7 +77,6 @@ class MeetAddViewModel @ViewModelInject constructor(
                     users.value!!.filter { user ->
                         user.nip == it.userNIP
                     }.forEach { user ->
-                        println("ARGANA : ${user.token}")
                         if (!user.token.isNullOrEmpty()) {
                             meetRepo.broadcast(user.token!!, meet.value?.name ?: "")
                                 .enqueue(object :

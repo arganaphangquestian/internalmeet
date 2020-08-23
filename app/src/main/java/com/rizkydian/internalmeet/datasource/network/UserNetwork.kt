@@ -34,6 +34,10 @@ class UserNetwork @Inject constructor() {
         .collection("users")
         .whereEqualTo("nip", nip)
 
+    fun getUserByPosition(position: String) = firestore
+        .collection("users")
+        .whereEqualTo("position", position)
+
     fun getUserByID(id: String) = firestore
         .collection("users")
         .document(id)

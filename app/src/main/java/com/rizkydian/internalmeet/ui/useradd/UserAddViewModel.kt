@@ -7,9 +7,18 @@ import com.rizkydian.internalmeet.data.User
 import com.rizkydian.internalmeet.datasource.repository.UserRepository
 import com.rizkydian.internalmeet.utils.NetworkState
 
-class UserAddViewModel @ViewModelInject constructor(private val userRepo: UserRepository): ViewModel() {
+class UserAddViewModel @ViewModelInject constructor(private val userRepo: UserRepository) :
+    ViewModel() {
     val ROLES = arrayOf("Admin", "Member")
     val GENDER = arrayOf("Laki-Laki", "Perempuan")
+    val POSITION = arrayOf(
+        "Keuangan",
+        "Kepegawaian",
+        "Kepala Cabang Dinas",
+        "Kepala Seksi SMA",
+        "Kepala Seksi SMK",
+        "Kepala Sekolah"
+    )
 
     val user = MutableLiveData(User())
     private val networkState = MutableLiveData<NetworkState>()

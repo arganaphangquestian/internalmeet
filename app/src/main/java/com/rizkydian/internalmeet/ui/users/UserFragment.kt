@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rizkydian.internalmeet.R
 import com.rizkydian.internalmeet.data.User
+import com.rizkydian.internalmeet.databinding.FragmentUserBinding
 import com.rizkydian.internalmeet.ui.useradd.UserAddActivity
 import com.rizkydian.internalmeet.ui.userdetail.UserDetailActivity
 import com.rizkydian.internalmeet.ui.useredit.UserEditActivity
@@ -29,12 +32,20 @@ class UserFragment : Fragment() {
 
     private lateinit var userViewModel: UserViewModel
     private lateinit var userAdapter: UserAdapter
+    private lateinit var userBinding: FragmentUserBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_user, container, false)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_user, container, false)
+        userBinding.apply {
+            viewModel = userViewModel
+            lifecycleOwner = this@UserFragment
+        }
+        return userBinding.root
     }
 
     override fun onStart() {
@@ -49,7 +60,6 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userAdapter = UserAdapter(userViewModel.getUsers())
         userAdapter.notifyDataSetChanged()
         rv_user.apply {
@@ -58,6 +68,7 @@ class UserFragment : Fragment() {
             setHasFixedSize(true)
         }
         action()
+        onFilter()
     }
 
     private fun action() {
@@ -94,6 +105,17 @@ class UserFragment : Fragment() {
         fab_add.setOnClickListener {
             startActivity(Intent(this.requireContext(), UserAddActivity::class.java))
         }
+    }
+
+    private fun onFilter() {
+        userViewModel.position.observe(this.viewLifecycleOwner, Observer {
+            if (!it.isNullOrEmpty()) {
+                userAdapter.updateOptions(userViewModel.getUsersFilter(it))
+            } else {
+                userAdapter.updateOptions(userViewModel.getUsers())
+            }
+            userAdapter.notifyDataSetChanged()
+        })
     }
 
 }

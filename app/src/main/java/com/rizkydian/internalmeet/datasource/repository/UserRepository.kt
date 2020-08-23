@@ -15,4 +15,6 @@ class UserRepository @Inject constructor (private val network: UserNetwork) {
 
     fun getUserByID(id: String) = network.getUserByID(id)
 
+    fun getUserByPosition(position: String) = network.getUserByPosition(position)
+
 }

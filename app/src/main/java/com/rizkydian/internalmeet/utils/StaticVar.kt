@@ -19,9 +19,17 @@ val ADMINBOTTOMMENU = arrayListOf(
     ProfileFragment.newInstance()
 )
 
+val POSITION = arrayOf(
+    "Keuangan",
+    "Kepegawaian",
+    "Kepala Cabang Dinas",
+    "Kepala Seksi SMA",
+    "Kepala Seksi SMK",
+    "Kepala Sekolah"
+)
+
 const val USERNIP = "USERNIP"
 const val USERROLE = "USERROLE"
-val ISFORM = arrayListOf(0, 1, 2) // 0 -> Create, 1 -> Read, 2 -> Edit
 
 const val DATETIMEFORMAT = "dd/M/yyyy hh:mm:ss"
 const val DATEFORMAT = "dd/M/yyyy"

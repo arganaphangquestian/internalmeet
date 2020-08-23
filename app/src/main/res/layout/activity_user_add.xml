@@ -103,20 +103,26 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_position"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/size_16dp"
                     android:hint="@string/position"
-                    app:endIconMode="clear_text"
                     app:helperText="@string/require">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={viewModel.user.position}" />
+                        android:completionThreshold="@{999999}"
+                        android:inputType="none"
+                        app:dropDownItemLayout="@{@layout/default_dropdown_menu_popup_item}"
+                        app:dropDownItems="@{viewModel.POSITION}"
+                        app:dropDownItemsIncludeEmpty="@{false}"
+                        android:text="@={viewModel.user.position}"
+                        tools:ignore="LabelFor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

@@ -170,3 +170,15 @@ Lapp/src/main/java/com/rizkydian/internalmeet/ui/meetedit/MeetEditActivity.kt,3
 Mapp/src/main/java/com/rizkydian/internalmeet/ui/useredit/UserEditViewModel.kt,9/b/9bb9e53732d559697b60dfe1f7f9e6a23cd7fdc5
 |
 Lapp/src/main/java/com/rizkydian/internalmeet/ui/useredit/UserEditActivity.kt,9/0/901e307512b9c836a767e1f0cf5f4009879c7562
+W
+'app/src/main/res/drawable/ic_female.xml,c/0/c076952729eb1f536f8e971dae9a8c5865f4a6a7
+U
+%app/src/main/res/drawable/ic_male.xml,4/b/4b9a160b5f3e32a50f17c0174e16d906c028dca0
+`
+0app/src/main/res/layout/activity_user_detail.xml,6/8/687b7e2d7114f0e61246b2f33e2be39f23dc07f7
+^
+.app/src/main/res/layout/activity_user_edit.xml,e/e/eed1efee03522339619352327bf436246f1678a6
+U
+%app/src/main/res/layout/card_user.xml,3/7/37966f93c9e445913b4be971e377c36b7fa75a17
+a
+1app/src/main/res/menu/context_menu_user_admin.xml,6/4/642b617d14433faf70433d96825c7b398a5189dc
